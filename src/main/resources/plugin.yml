@@ -1,0 +1,19 @@
+name: MinecraftServerProfiler
+version: '1.0'
+main: net.rainbowfurry.minecraftServerProfiler.MinecraftServerProfiler
+api-version: '1.21'
+prefix: ServerProfiler
+authors: [ RainbowFurry ]
+description: Profile your server performance in detail
+website: https://www.rainbowfurry.com
+commands:
+  profiler:
+    description: Main command for Server Profiler
+    usage: /profiler [help|gui|tptop|save|export <json|csv|md> [id]]
+    permission: serverprofiler.use
+    permission-message: You don't have permission to use this command!
+    aliases: [profile, sp]
+permissions:
+  serverprofiler.use:
+    description: Allows using all Server Profiler commands
+    default: op

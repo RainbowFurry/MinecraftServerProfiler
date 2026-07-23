@@ -1,0 +1,149 @@
+# MinecraftServerProfiler Configuration
+# Here you can configure all settings for the Server Profiler
+
+##########################################################################
+# Status Colors (for values like TPS, MSPT, memory usage, etc.)
+# Use MiniMessage format: https://docs.advntr.dev/minimessage/format.html
+# Examples:
+# - <green>, <yellow>, <gold>, <red> (Predefined colors)
+# - <color:#00ff00>, <color:#ffff00> (Hex colors)
+# - <gradient:#1a73e8:#34a853> (Gradients)
+##########################################################################
+status-colors:
+  good: "<green>"
+  moderate: "<yellow>"
+  bad: "<gold>"
+  critical: "<red>"
+
+##########################################################################
+# Text Colors (for labels, descriptions, top elements, etc.)
+##########################################################################
+text-colors:
+  label: "<dark_gray>"
+  highlight: "<aqua>"
+  none: "<gray>"
+
+##########################################################################
+# Gradients for Section Headers
+# Format: <gradient:COLOR1:COLOR2>
+##########################################################################
+gradients:
+  header: "<gradient:#1a73e8:#34a853>"
+  system: "<gradient:#1a73e8:#34a853>"
+  game: "<gradient:#34a853:#fbbc05>"
+  worlds: "<gradient:#fbbc05:#ea4335>"
+  breakdown: "<gradient:#ea4335:#1a73e8>"
+  top: "<gradient:#fbbc05:#ea4335>"
+
+##########################################################################
+# Thresholds for Color Coding
+##########################################################################
+thresholds:
+  tps:
+    good: 19.0
+    moderate: 15.0
+    bad: 10.0
+  mspt:
+    good: 30.0
+    moderate: 40.0
+    bad: 50.0
+  percentage:
+    good: 10.0
+    moderate: 20.0
+    bad: 30.0
+  players:
+    good: 50
+    moderate: 100
+    bad: 200
+  tile-entities:
+    good: 1000
+    moderate: 5000
+    bad: 20000
+  chunks:
+    good: 500
+    moderate: 1500
+    bad: 5000
+  redstone:
+    good: 500
+    moderate: 2000
+    bad: 5000
+  ping:
+    good: 50
+    moderate: 100
+    bad: 200
+  memory:
+    good: 50
+    moderate: 75
+    bad: 90
+
+##########################################################################
+# History/Logging Settings
+##########################################################################
+history:
+  enabled: true
+  interval-seconds: 30 # How often to save a snapshot (in seconds)
+  max-snapshots: 100 # Maximum number of snapshots to keep (older ones will be deleted)
+  database-type: "sqlite" # Only sqlite is supported for now
+  database-file: "history.db" # Path to the database file (relative to plugin folder)
+
+##########################################################################
+# Alerts/Warnings Settings
+##########################################################################
+alerts:
+  enabled: true
+  # List of alerts (you can add more!)
+  list:
+    - name: "low-tps"
+      enabled: true
+      type: "tps-below"
+      threshold: 15
+      message: "<red>[ServerProfiler] Warning: TPS dropped below <threshold>! Current: <value>"
+      broadcast-to-ops: true
+      broadcast-to-console: true
+    - name: "high-mspt"
+      enabled: true
+      type: "mspt-above"
+      threshold: 50
+      message: "<red>[ServerProfiler] Warning: MSPT went above <threshold>! Current: <value>"
+      broadcast-to-ops: true
+      broadcast-to-console: true
+    - name: "high-memory"
+      enabled: true
+      type: "memory-above-percent"
+      threshold: 90
+      message: "<red>[ServerProfiler] Warning: Memory usage is above <threshold>%! Current: <value>%"
+      broadcast-to-ops: true
+      broadcast-to-console: true
+  # Discord webhook (optional)
+  discord:
+    enabled: false
+    webhook-url: "" # Your Discord webhook URL
+    username: "ServerProfiler"
+    avatar-url: "" # Optional avatar URL
+    embed-color: "#ff0000" # Red by default
+
+##########################################################################
+# GUI Settings
+##########################################################################
+gui:
+  enabled: true
+  title: "<gradient:#1a73e8:#34a853><bold>Server Profiler</bold></gradient>"
+  size: 54 # Must be a multiple of 9 (max 54)
+
+##########################################################################
+# Update Check Settings
+##########################################################################
+update-check:
+  enabled: true
+  check-on-startup: true
+  notify-ops-on-join: true
+  repo-owner: "YOUR-USERNAME" # Replace with your GitHub username
+  repo-name: "MinecraftServerProfiler" # Replace with your repo name
+
+##########################################################################
+# Export Settings
+##########################################################################
+export:
+  enabled: true
+  default-format: "json" # json, csv, or markdown
+  export-directory: "exports" # Directory to save exports (relative to plugin folder)

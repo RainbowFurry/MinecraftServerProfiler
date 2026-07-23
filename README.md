@@ -198,7 +198,7 @@ update-check:
 ## Bauen aus dem Quellcode
 
 1. Stelle sicher, dass du Java 21 und Maven installiert hast
-2. Klone das Repository: `git clone https://github.com/[YOUR-USERNAME]/MinecraftServerProfiler.git`
+2. Klone das Repository: `git clone https://github.com/RainbowFurry/MinecraftServerProfiler.git`
 3. Navigiere zum Projektverzeichnis: `cd MinecraftServerProfiler`
 4. Baue das Plugin: `mvn clean package`
 5. Die kompilierte `.jar`-Datei befindet sich im `target/`-Verzeichnis
